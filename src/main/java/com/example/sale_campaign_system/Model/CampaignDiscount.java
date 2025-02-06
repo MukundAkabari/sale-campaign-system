@@ -1,5 +1,6 @@
 package com.example.sale_campaign_system.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,15 +13,23 @@ public class CampaignDiscount {
     @Column(name = "discount_percentage")
     private int discouuntPercentage;
 
-
     @ManyToOne
     @JoinColumn(name = "campaign_id")
+    @JsonBackReference
     private Campaign campaign;
 
+    @Column(name = "product_id")
+    private int productId;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @Override
+    public String toString() {
+        return "CampaignDiscount{" +
+                "id=" + id +
+                ", discouuntPercentage=" + discouuntPercentage +
+                ", campaign=" + campaign +
+                ", productId=" + productId +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -46,11 +55,11 @@ public class CampaignDiscount {
         this.campaign = campaign;
     }
 
-    public Product getProduct() {
-        return product;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 }
