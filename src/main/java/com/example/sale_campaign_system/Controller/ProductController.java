@@ -4,7 +4,7 @@ import com.example.sale_campaign_system.Model.Product;
 import com.example.sale_campaign_system.Model.ResponseDTO;
 import com.example.sale_campaign_system.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

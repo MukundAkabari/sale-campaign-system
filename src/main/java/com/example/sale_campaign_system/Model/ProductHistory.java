@@ -22,7 +22,7 @@ public class ProductHistory {
     private double disCountPrice;
 
     @Column(name = "date")
-    private LocalDate localDate;
+    private String  localDate;
 
     public int getId() {
         return id;
@@ -56,11 +56,11 @@ public class ProductHistory {
         this.disCountPrice = disCountPrice;
     }
 
-    public LocalDate getLocalDate() {
+    public String getLocalDate() {
         return localDate;
     }
 
-    public void setLocalDate(LocalDate localDate) {
+    public void setLocalDate(String localDate) {
         this.localDate = localDate;
     }
 }

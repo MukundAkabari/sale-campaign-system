@@ -16,6 +16,8 @@ public class CampaignDiscount {
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;
 
+    @Column(name = "product_id")
+    private int productId;
 
 
     public int getId() {
@@ -42,5 +44,11 @@ public class CampaignDiscount {
         this.campaign = campaign;
     }
 
+    public int getProductId() {
+        return productId;
+    }
 
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 }
