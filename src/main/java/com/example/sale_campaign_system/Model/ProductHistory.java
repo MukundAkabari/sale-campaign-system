@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Table(name = "product_history")
 public class ProductHistory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne
@@ -16,7 +16,7 @@ public class ProductHistory {
     private Product product;
 
     @Column(name = "price")
-    private int price;
+    private double price;
 
     @Column(name = "dis_count_price")
     private double disCountPrice;
@@ -40,11 +40,11 @@ public class ProductHistory {
         this.product = product;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

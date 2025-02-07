@@ -10,7 +10,7 @@ import java.util.UUID;
 @Table(name = "product")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy =GenerationType.AUTO)
     @Column(name = "p_id")
     private int pId;
     @Column(name = "title")
@@ -23,22 +23,22 @@ public class Product {
     @Column(name = "current_price")
     private double currentPrice;
     @Column(name = "discount")
-    private int discount;
+    private double discount;
     @Column(name = "inventory_count")
     private int inventoryCount;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<ProductHistory> productHistoryList;
 
-    public Product(){
-        this.pId=generetuniqid();
-    }
+//    public Product(){
+//        this.pId=generetuniqid();
+//    }
 
-    public int generetuniqid(){
-        String uuid= UUID.randomUUID().toString().replace("-"," ");
-        String accountno=uuid.substring(0,6);
-        return (int)(Integer.parseInt(accountno,16)%1000000L);
-    }
+//    public int generetuniqid(){
+//        String uuid= UUID.randomUUID().toString().replace("-"," ");
+//        String accountno=uuid.substring(0,6);
+//        return (int)(Integer.parseInt(accountno,16)%1000000L);
+//    }
 
     @Override
     public String toString() {
@@ -101,11 +101,11 @@ public class Product {
         this.currentPrice = currentPrice;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
