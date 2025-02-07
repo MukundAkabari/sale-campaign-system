@@ -42,7 +42,5 @@ public class CampaignDiscount {
         this.campaign = campaign;
     }
 
-    }
 
-    }
 }
