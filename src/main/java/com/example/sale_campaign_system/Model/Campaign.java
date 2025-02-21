@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @Table(name = "campaign")
@@ -17,38 +17,23 @@ public class Campaign {
     @Column(name = "title")
     private String title;
     @Column(name = "start_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/mm/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private String startDate;
     @Column(name = "end_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/mm/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private String endDate;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "campaign")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "campaign")
     @JsonBackReference
     private List<CampaignDiscount> campaignDiscountList;
 
-    public Campaign(){
-        this.cId=genereteUniq();
-    }
-    public int genereteUniq(){
-        String uuid= UUID.randomUUID().toString().replace("-"," ");
-        String account=uuid.substring(0,6);
-        return (int)(Integer.parseInt(account,16)%1000000L);
-    }
+
 
     @Override
     public String toString() {
         return "Campaign{" +
-                "campaignDiscountList=" + (campaignDiscountList != null?campaignDiscountList.size():0) +
+                "campaignDiscountList=" + (campaignDiscountList != null ? campaignDiscountList.size() : 0) +
                 '}';
-    }
-
-    public List<CampaignDiscount> getCampaignDiscountList() {
-        return campaignDiscountList;
-    }
-
-    public void setCampaignDiscountList(List<CampaignDiscount> campaignDiscountList) {
-        this.campaignDiscountList = campaignDiscountList;
     }
 
     public int getcId() {
@@ -58,6 +43,8 @@ public class Campaign {
     public void setcId(int cId) {
         this.cId = cId;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -81,5 +68,13 @@ public class Campaign {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public List<CampaignDiscount> getCampaignDiscountList() {
+        return campaignDiscountList;
+    }
+
+    public void setCampaignDiscountList(List<CampaignDiscount> campaignDiscountList) {
+        this.campaignDiscountList = campaignDiscountList;
     }
 }
