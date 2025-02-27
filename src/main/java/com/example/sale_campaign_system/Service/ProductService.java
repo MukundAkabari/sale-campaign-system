@@ -6,6 +6,7 @@ import com.example.sale_campaign_system.Model.ResponseDTO;
 import com.example.sale_campaign_system.Repository.ProductHistoryRepository;
 import com.example.sale_campaign_system.Repository.ProductRepository;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 
 @Service
@@ -58,12 +60,15 @@ public class ProductService {
             productHistory.setPrice(product.getCurrentPrice());
             productHistory.setDisCountPrice(discount);
             DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String date = LocalDate.now().format(dateTimeFormatter);
-            productHistory.setLocalDate(date);
+            productHistory.setLocalDate(LocalDate.now());
             //save the poductHistory
             productHistoryRepository.save(productHistory);
         }catch (Exception e){
             logger.error("Error daving History",e.getMessage());
         }
+    }
+
+    public List<Product> getProduct() {
+        return productRepository.findAll();
     }
 }

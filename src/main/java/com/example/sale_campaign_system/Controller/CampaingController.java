@@ -5,8 +5,9 @@ import com.example.sale_campaign_system.Model.ResponseDTO;
 import com.example.sale_campaign_system.Service.CampaignService;
 import com.example.sale_campaign_system.Shedular.PriceAdjustmentShedular;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("campaign")
@@ -22,8 +23,12 @@ public class CampaingController {
             return campaignService.saveCampaign(campaign);
 
     }
-    @PutMapping("adjustPrice")
-    public void revartShedular(){
-        priceAdjustmentShedular.revartShedular();
+    @GetMapping("getCmapaign")
+    public List<Campaign> getCampaign(){
+          return  campaignService.getCampaign();
     }
+//    @PutMapping("adjustPrice")
+//    public void revartShedular(){
+//        priceAdjustmentShedular.revartShedular();
+//    }
 }

@@ -4,18 +4,23 @@ import com.example.sale_campaign_system.Model.Campaign;
 import com.example.sale_campaign_system.Model.CampaignDiscount;
 import com.example.sale_campaign_system.Model.ResponseDTO;
 import com.example.sale_campaign_system.Repository.CampaignRepository;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class CampaignService {
     @Autowired
-    CampaignRepository campaignRepository;
+     CampaignRepository campaignRepository;
 
+    public  List<Campaign> getCampaign() {
 
-
+            return campaignRepository.findAll();
+    }
 
 
     public ResponseDTO<Campaign> saveCampaign(Campaign campaign) {

@@ -12,9 +12,9 @@ import java.util.List;
 @Repository
 public interface CampaignRepository extends JpaRepository<Campaign,Integer> {
     @Query(value = "SELECT * FROM campaign WHERE start_date = :startDate", nativeQuery = true)
-    List<Campaign> selectCampaignAllToday(@Param("startDate") String startDate);
+    List<Campaign> selectCampaignAllToday(@Param("startDate") LocalDate startDate);
 
 
     @Query(value = "SELECT * FROM campaign WHERE end_date= :endtDate",nativeQuery = true)
-    List<Campaign> endcampaignalltoday(@Param("endtDate")String endDate);
+    List<Campaign> endcampaignalltoday(@Param("endtDate")LocalDate endDate);
 }

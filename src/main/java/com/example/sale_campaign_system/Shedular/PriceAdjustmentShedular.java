@@ -36,8 +36,7 @@ public class PriceAdjustmentShedular {
     @Scheduled(cron = "0 0 0 * * *")
     public void AdjuctShedular(){
 
-        DateTimeFormatter dateTimeFormatter= DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String today = LocalDate.now().format(dateTimeFormatter);
+        LocalDate today=LocalDate.now();
         List<Campaign> activesale = campaignRepository.selectCampaignAllToday(today);
         System.out.println();
         for (Campaign c:activesale){
@@ -60,10 +59,10 @@ public class PriceAdjustmentShedular {
             }
         }
     }
+    @Scheduled(cron = "0 0 0 * * *")
     public void revartShedular(){
 
-        DateTimeFormatter dateTimeFormatter= DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String today = LocalDate.now().format(dateTimeFormatter);
+       LocalDate today=LocalDate.now();
         List<Campaign> endsale = campaignRepository.endcampaignalltoday(today);
 
         for (Campaign c:endsale){
@@ -74,7 +73,7 @@ public class PriceAdjustmentShedular {
 
                 if(product != null){
                     System.out.println();
-                    String today1 =c.getStartDate();
+                    LocalDate today1 = LocalDate.parse(c.getStartDate());
 
                     ProductHistory productHistory=productHistoryRepository.findTopByProductIdAndDate(product.getpId(),today1);
                     System.out.println();
