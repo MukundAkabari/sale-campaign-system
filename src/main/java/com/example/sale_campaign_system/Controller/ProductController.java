@@ -4,10 +4,10 @@ import com.example.sale_campaign_system.Model.Product;
 import com.example.sale_campaign_system.Model.ProductDTO;
 import com.example.sale_campaign_system.Model.ResponseDTO;
 import com.example.sale_campaign_system.Service.ProductService;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,5 +31,15 @@ public class ProductController {
                 .map(ProductDTO::new)
                 .collect(Collectors.toUnmodifiableList());
     }
+    @GetMapping("pagenated")
+    public ResponseDTO<Page<ProductDTO>> getAllPaginated(@RequestParam(defaultValue = "1") int page,
+                                                      @RequestParam(defaultValue = "10") int size) {
+        return productService.findAllPaginated(page, size);
+    }
+    @PutMapping("upadteProduct")
+    public ResponseDTO<Product> updateProduct(@RequestHeader("ProductId") int ProductId,@RequestHeader("price") double price){
+        return productService.updateProduct(ProductId,price);
+    }
+
 
 }

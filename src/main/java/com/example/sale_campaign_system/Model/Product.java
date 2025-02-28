@@ -31,17 +31,17 @@ public class Product {
     private List<ProductHistory> productHistoryList;
 
 
-
     @Override
     public String toString() {
-        return"Product{"+
-            "pId" + pId +
-                "title"+ title+
-                "description"+description+
-                "mrp"+mrp+
-                "currentPrice"+currentPrice+
-                "discount"+discount+
-                "inventoryCount"+inventoryCount+
+        return "Product{" +
+                "pId=" + pId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", mrp=" + mrp +
+                ", currentPrice=" + currentPrice +
+                ", discount=" + discount +
+                ", inventoryCount=" + inventoryCount +
+                ", productHistoryList=" + productHistoryList +
                 '}';
     }
 
